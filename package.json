@@ -16,7 +16,8 @@
     "hubot-slack": "^3.2.1",
     "hubot-youtube": "^0.1.2",
     "cleverbot-node": "0.1.8",
-    "hubot-jenkins": "1.0.2"
+    "hubot-jenkins": "1.0.2",
+    "hubot-jenkins-notifier": "0.1.5"
   },
   "engines": {
     "node": "0.10.x"

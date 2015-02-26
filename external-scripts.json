@@ -7,6 +7,7 @@
   "hubot-rules",
   "hubot-youtube",
   "hubot-jenkins",
+  "hubot-chartroom",
   "hubot-jenkins-notifier",
   "hubot-gitlab-hooks"
 ]

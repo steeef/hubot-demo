@@ -5,6 +5,9 @@
   "author": "Stephen Price <stephen@stp5.net>",
   "description": "Gerty 3000",
   "dependencies": {
+    "underscore": "^1.6.0",
+    "strftime": "^0.8.0",
+    "xml2js": "^0.4.1",
     "hubot": "^2.11.1",
     "hubot-diagnostics": "0.0.1",
     "hubot-google-images": "^0.1.3",

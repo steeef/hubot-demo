@@ -8,6 +8,7 @@
   "hubot-youtube",
   "hubot-jenkins",
   "hubot-chartroom",
+  "hubot-auth",
   "hubot-jenkins-notifier",
   "hubot-gitlab-hooks"
 ]

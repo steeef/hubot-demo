@@ -8,7 +8,7 @@
 #   "hubot-auth"
 #
 # Configuration:
-#   HUBOT_RUNDECK_URL
+#   HUBOT_RUNDECK_URL - root URL for Rundeck, not including api path
 #   HUBOT_RUNDECK_TOKEN
 #   HUBOT_RUNDECK_PROJECT
 #
@@ -20,6 +20,7 @@
 #   hubot rundeck output <id> - Print the output of execution <id>
 #
 # Notes:
+#   REQUIRES Rundeck API version 12
 #   Todo:
 #     * make job name lookups case-insensitive
 #     * ability to show results of a job/execution
@@ -40,7 +41,7 @@ class Rundeck
   constructor: (@robot) ->
     @logger = @robot.logger
 
-    @baseUrl = process.env.HUBOT_RUNDECK_URL
+    @baseUrl = "#{process.env.HUBOT_RUNDECK_URL}/api/12"
     @authToken = process.env.HUBOT_RUNDECK_TOKEN
     @project = process.env.HUBOT_RUNDECK_PROJECT
     @adminRole = "rundeck_admin"
@@ -190,7 +191,7 @@ module.exports = (robot) ->
       rundeck.jobs().run name, null, (job, results) ->
         if job
           robot.logger.debug inspect(results, false, null)
-          msg.send "Running job #{name}: #{results.result.executions[0].execution[0]['$'].href}"
+          msg.send "Running job #{name}: #{results.executions.execution[0]['$'].href}"
         else
           msg.send "Could not execute Rundeck job \"#{name}\"."
     else
@@ -206,7 +207,7 @@ module.exports = (robot) ->
     if robot.auth.hasRole(msg.envelope.user, rundeck.adminRole)
       rundeck.jobs().run name, query, (job, results) ->
         if job
-          msg.send "Running job #{name}: #{results.result.executions[0].execution[0]['$'].href}"
+          msg.send "Running job #{name}: #{results.executions.execution[0]['$'].href}"
         else
           msg.send "Could not execute Rundeck job \"#{name}\"."
     else
